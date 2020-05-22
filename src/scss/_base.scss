@@ -1,0 +1,41 @@
+html,
+body {
+  margin: 0 auto;
+  font-family: Calibri;
+  color: $plum;
+}
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.list {
+  &-item {
+    color: $blue-zodiac;
+  }
+}
+
+.btn {
+  font-family: Calibri;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: $white;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+}

@@ -38,6 +38,20 @@ requireComponent.keys().forEach((fileName) => {
   );
 });
 
+Vue.filter("bolderText", (text, value) => {
+  return text.replace(value, `<strong>${value}</strong>`);
+});
+
+Vue.filter("currencyFormatter", (num) => {
+  return parseInt(num)
+    .toLocaleString()
+    .replace(",", ".");
+});
+
+Vue.filter("renderHTML", (value) => {
+  return value;
+});
+
 Vue.config.productionTip = false;
 
 new Vue({
