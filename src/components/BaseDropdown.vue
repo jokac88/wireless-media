@@ -54,6 +54,7 @@ export default {
   position: absolute;
   top: 18px;
   right: 173px;
+  z-index: 1;
 
   @include for-tablet-only {
     top: 41px;
