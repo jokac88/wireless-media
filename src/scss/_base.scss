@@ -1,6 +1,9 @@
+// Base styles
+
 html,
 body {
   margin: 0 auto;
+  padding: 0;
   font-family: Calibri;
   color: $plum;
 }
@@ -18,11 +21,24 @@ body {
   outline: none;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
+hr {
+  margin: 0;
+}
+
+// List style
+
 .list {
   &-item {
     color: $blue-zodiac;
   }
 }
+
+// Button style
 
 .btn {
   font-family: Calibri;
@@ -34,6 +50,8 @@ body {
   background-color: transparent;
   cursor: pointer;
 }
+
+// Icon style
 
 .icon {
   width: 45px;

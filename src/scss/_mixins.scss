@@ -1,3 +1,6 @@
+// Mixins styles
+
+// Mixins for flex
 @mixin d-flex-align {
   display: flex;
   align-items: center;
@@ -9,14 +12,54 @@
   justify-content: center;
 }
 
+@mixin d-flex-end {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
 @mixin d-flex-between {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-@mixin ul {
+@mixin d-flex-between-end {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+@mixin d-flex-direction-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Mixins for ul li
+@mixin ul-li {
   margin: 0;
   padding: 0;
-  list-style-type: none;
+}
+
+@mixin ul-li-none {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// Mixins for media queries
+
+// Media query for mobile
+@mixin for-mobile-only {
+  @media (max-width: 766px) {
+    @content;
+  }
+}
+
+// Media query for tablet
+@mixin for-tablet-only {
+  @media (max-width: 1365px) {
+    @content;
+  }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="television">
+  <section class="television">
     <div class="television-flex">
       <img
         :class="classes"
@@ -18,7 +18,7 @@
       </ul>
     </div>
     <hr />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -31,12 +31,34 @@ export default {
 };
 </script>
 
+<!-- Add "scoped" attribute to limit SCSS to this component only -->
 <style scoped lang="scss">
+// Import scss files
+
 @import "@/scss/_mixins.scss";
+
+// Style
 
 .television {
   &-flex {
     @include d-flex-align;
+    margin: 39px 0 34px;
+
+    @include for-tablet-only {
+      margin: 40px 0;
+    }
+
+    @include for-tablet-only {
+      margin: 37px 0 41px;
+    }
+
+    ul {
+      @include ul-li;
+    }
+
+    .icon {
+      margin-right: 42px;
+    }
   }
 }
 </style>

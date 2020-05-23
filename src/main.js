@@ -38,18 +38,35 @@ requireComponent.keys().forEach((fileName) => {
   );
 });
 
+// Filter for bolder text
 Vue.filter("bolderText", (text, value) => {
   return text.replace(value, `<strong>${value}</strong>`);
 });
 
+// Filter for currency format
 Vue.filter("currencyFormatter", (num) => {
   return parseInt(num)
     .toLocaleString()
     .replace(",", ".");
 });
 
-Vue.filter("renderHTML", (value) => {
-  return value;
+// Directive for outside click
+Vue.directive("out", {
+  bind: (el, binding, vNode) => {
+    const handler = (e) => {
+      if (!el.contains(e.target) && el !== e.target) {
+        //and here is you toggle var. thats it
+        vNode.context[binding.expression] = false;
+      }
+    };
+    el.out = handler;
+    document.addEventListener("click", handler);
+  },
+
+  unbind: (el, binding) => {
+    document.removeEventListener("click", el.out);
+    el.out = null;
+  },
 });
 
 Vue.config.productionTip = false;

@@ -1,18 +1,33 @@
 <template>
-  <div class="item">
+  <section class="item">
+    <div v-if="isFeatured > 0" class="promo">
+      <h5 class="promo-text">{{ promoText }}</h5>
+      <hr />
+    </div>
     <div class="wrapper">
-      <div v-if="isFeatured > 0">
-        <h5 class="promo-text">{{ promoText }}</h5>
-        <hr />
-      </div>
+      <!-- BaseHeading Component -->
       <BaseHeading>{{ items.name }}</BaseHeading>
+      <!-- Television Component -->
       <Television :data="data" :television="items.included" />
-      <Net :data="data" :net="items.included" />
-      <Promotions :promotions="items.promotions" />
+      <!-- Net Component -->
+      <Net
+        :data="data"
+        :net="items.included"
+        :active="data.contract_length.preselected_contract_length"
+      />
+      <!-- Promotions Component -->
+      <transition name="slide" mode="out-in">
+        <Promotions
+          :promotions="items.promotions"
+          v-if="data.contract_length.preselected_contract_length === 'Ugovor 24 meseca'"
+        />
+      </transition>
+      <!-- Prices Component -->
       <Prices :prices="items.prices" />
+      <!-- BaseButton Component -->
       <BaseButton name="Naručiti" />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -38,27 +53,63 @@ export default {
 };
 </script>
 
+<!-- Add "scoped" attribute to limit SCSS to this component only -->
 <style scoped lang="scss">
+// Import scss files
+
 @import "@/scss/_colors.scss";
 @import "@/scss/_mixins.scss";
+@import "@/scss/_transitions.scss";
+
+// Style
 
 .item {
-  max-width: 340px;
-  height: 741px;
-  margin: 0 20px 20px;
+  width: 340px;
+  margin: 0 15px 23px;
+  position: relative;
+  bottom: 0;
   background-color: $merino;
   border-radius: 10px;
+  transition: $transition-5;
+  cursor: pointer;
+
+  &:hover {
+    bottom: 10px;
+    -webkit-box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.75);
+  }
+
+  @include for-tablet-only {
+    width: 360px;
+    margin: 0 auto 30px;
+  }
+
+  @include for-mobile-only {
+    width: 100%;
+  }
 
   .wrapper {
-    padding: 0 20px;
+    padding: 30px 20px;
   }
 
   .promo {
+    padding: 0 20px;
+
     &-text {
-      margin: 0;
+      padding: 12px 0;
       font-size: 15px;
       font-weight: 700;
       text-align: center;
+      font-style: italic;
+
+      @include for-tablet-only {
+        padding: 14px 0 12px;
+      }
+
+      @include for-tablet-only {
+        padding: 12px 0 14px;
+      }
     }
   }
 }
