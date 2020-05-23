@@ -54,6 +54,7 @@ export default {
       margin-left: 31px;
       color: $plum;
       font-size: 14px;
+      font-weight: 700;
       font-style: italic;
     }
   }
