@@ -1,8 +1,8 @@
 <template>
   <section class="home">
     <!-- Loader Component -->
-    <!-- <Loader v-if="loading" /> -->
-    <div class="items">
+    <Loader v-if="loading" />
+    <div class="items" v-else>
       <!-- BaseDropdown Component -->
       <BaseDropdown
         :contracts="typeof data.contract_length !== 'undefined' ? data.contract_length.contract_length_options : []"

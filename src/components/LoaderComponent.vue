@@ -1,7 +1,7 @@
 <template>
   <section class="loader">
     <div class="frame">
-      <img class="rotating" src="../../public/new-loader.png" alt="../../public/new-loader.png" />
+      <img class="rotating" src="../../public/loader.png" alt="../../public/loader.png" />
     </div>
   </section>
 </template>
