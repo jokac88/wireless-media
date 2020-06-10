@@ -32,9 +32,7 @@ export default new Vuex.Store({
     fetchData({ commit }) {
       DataService.getData()
         .then((response) => {
-          if (response.data !== null && typeof response.data !== "undefined") {
-            commit("SET_DATA", response.data);
-          }
+          commit("SET_DATA", response.data);
         })
         .catch((error) => console.log(error));
     },
@@ -43,13 +41,7 @@ export default new Vuex.Store({
       commit("SET_PRESELECTED_CONTRACT", contract);
     },
     maxHeight({ commit }, payload) {
-      console.log(payload);
       commit("SET_MAX_HEIGHT", payload);
-    },
-  },
-  getters: {
-    getMaxHeight: (state) => {
-      return state.netMaxHeight;
     },
   },
   modules: {},

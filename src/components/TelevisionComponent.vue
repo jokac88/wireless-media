@@ -1,6 +1,6 @@
 <template>
   <section class="television">
-    <div class="television-flex">
+    <div class="television-flex" ref="tvHeight" :style="{ height : height + 'px' }">
       <img
         :class="classes"
         class="icon"
@@ -22,11 +22,30 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { heightMixin } from "@/mixins/heightMixin.js";
+
 export default {
+  mixins: [heightMixin],
   props: {
     classes: Array,
     data: Object,
     television: Array
+  },
+  computed: {
+    ...mapState(["tvMaxHeight"]),
+    getHeight() {
+      return this.$refs.tvHeight.clientHeight;
+    },
+    height() {
+      if (this.isActive) {
+        return this.tvMaxHeight;
+      }
+    }
+  },
+  mounted() {
+    const payload = { section: "tvMaxHeight", height: this.getHeight };
+    this.maxHeight(payload).then(() => (this.isActive = true));
   }
 };
 </script>

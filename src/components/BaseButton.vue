@@ -29,6 +29,7 @@ export default {
     font-weight: 700;
     transition: $transition-3;
     overflow: hidden;
+    margin-bottom: 30px;
 
     &:hover {
       &::after {

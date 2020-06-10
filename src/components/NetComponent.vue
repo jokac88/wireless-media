@@ -1,9 +1,11 @@
 <template>
   <section class="net">
-    <!-- ISSUE -->
-    <!-- :style="{ height: height + 'px'}" -->
-    <!-- ISSUE -->
-    <div class="net-flex" ref="netHeight" :class="{ active : active !== 'Ugovor 24 meseca' }">
+    <div
+      class="net-flex"
+      ref="netHeight"
+      :class="{ active : active !== 'Ugovor 24 meseca' }"
+      :style="{ height : height + 'px' }"
+    >
       <img
         :class="classes"
         class="icon"
@@ -24,33 +26,31 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapState } from "vuex";
+import { heightMixin } from "@/mixins/heightMixin.js";
 
 export default {
+  mixins: [heightMixin],
   props: {
     classes: Array,
     data: Object,
     net: Array,
     active: String
   },
-  methods: mapActions(["maxHeight"]),
   computed: {
-    ...mapGetters(["getMaxHeight"]),
+    ...mapState(["netMaxHeight"]),
     getHeight() {
       return this.$refs.netHeight.clientHeight;
     },
     height() {
-      const height = setTimeout(() => {
-        this.getMaxHeight;
-      });
-      return height;
+      if (this.isActive) {
+        return this.netMaxHeight;
+      }
     }
   },
   mounted() {
-    setTimeout(() => {
-      const payload = { section: "netMaxHeight", height: this.getHeight };
-      this.maxHeight(payload);
-    }, 3000);
+    const payload = { section: "netMaxHeight", height: this.getHeight };
+    this.maxHeight(payload).then(() => (this.isActive = true));
   }
 };
 </script>

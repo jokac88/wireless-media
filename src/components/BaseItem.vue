@@ -1,12 +1,8 @@
 <template>
   <section class="item">
-    <div v-if="isFeatured > 0" class="promo">
-      <h5 class="promo-text">{{ promoText }}</h5>
-      <hr />
-    </div>
     <div class="wrapper">
       <!-- BaseHeading Component -->
-      <BaseHeading>{{ items.name }}</BaseHeading>
+      <BaseHeading :isFeatured="isFeatured" :promoText="promoText">{{ items.name }}</BaseHeading>
       <!-- Television Component -->
       <Television :data="data" :television="items.included" />
       <!-- Net Component -->
@@ -66,6 +62,7 @@ export default {
 .item {
   width: 340px;
   margin: 0 15px 23px;
+  @include d-flex-center;
   position: relative;
   bottom: 0;
   background-color: $merino;
@@ -90,27 +87,7 @@ export default {
   }
 
   .wrapper {
-    padding: 30px 20px;
-  }
-
-  .promo {
-    padding: 0 20px;
-
-    &-text {
-      padding: 12px 0;
-      font-size: 15px;
-      font-weight: 700;
-      text-align: center;
-      font-style: italic;
-
-      @include for-tablet-only {
-        padding: 14px 0 12px;
-      }
-
-      @include for-tablet-only {
-        padding: 12px 0 14px;
-      }
-    }
+    margin: 0 20px;
   }
 }
 </style>
