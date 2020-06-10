@@ -16,7 +16,7 @@
         <li
           v-for="item in net"
           v-if="item.product_category === 'net'"
-          v-html="$options.filters.bolderText(item.long_name, item.attributes.attribute_value)"
+          v-html="$options.filters.bolder(item.long_name, item.attributes.attribute_value)"
           :key="item.id"
           class="list-item"
         ></li>

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import store from "./store/store.js";
+import { bolderFilter, currencyFormatter } from "@/filters/filters.js";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 
@@ -39,16 +40,10 @@ requireComponent.keys().forEach((fileName) => {
 });
 
 // Filter for bolder text
-Vue.filter("bolderText", (text, value) => {
-  return text.replace(value, `<strong>${value}</strong>`);
-});
+Vue.filter("bolder", bolderFilter);
 
 // Filter for currency format
-Vue.filter("currencyFormatter", (num) => {
-  return parseInt(num)
-    .toLocaleString()
-    .replace(",", ".");
-});
+Vue.filter("currency", currencyFormatter);
 
 // Directive for outside click
 Vue.directive("out", {

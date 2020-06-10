@@ -7,11 +7,11 @@
       <p
         v-if="data.contract_length.preselected_contract_length === 'Ugovor 24 meseca'"
         class="price price-old"
-      >{{ prices.old_price_recurring[data.contract_length.preselected_contract_length] | currencyFormatter }} rsd/mes.</p>
+      >{{ prices.old_price_recurring[data.contract_length.preselected_contract_length] | currency }} rsd/mes.</p>
       <p
         :class="{ active : data.contract_length.preselected_contract_length !== 'Ugovor 24 meseca' }"
         class="price price-reccuring"
-      >{{ prices.price_recurring[data.contract_length.preselected_contract_length] | currencyFormatter }} rsd/mes.</p>
+      >{{ prices.price_recurring[data.contract_length.preselected_contract_length] | currency }} rsd/mes.</p>
     </div>
     <transition name="fade" mode="out-in">
       <div
